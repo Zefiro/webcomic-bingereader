@@ -1,0 +1,9 @@
+{
+	"baseUrl": "https://crimsonflagcomic.com/",
+	"targetFilename": "cfData.js",
+	"outputJsonPName": "cfData",
+	"startUrl": "comic.php?comicID=1",
+	"refetchAmount": 1,
+	"parser": "parseCF",
+	"htmlSuffix": ""
+}

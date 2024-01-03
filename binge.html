@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="referrer" content="never">
+<title>Stand by, loading...</title>
+<script src="jquery-1.11.0.min.js"></script>
+<script src="flytable.js"></script>
+<script src="archiveBinger.js"></script>
+<script>
+
+/* Speedreader, archiveBinger.js, and flytable.js coded by tangent128 */
+/* https://github.com/Tangent128 */
+var bingerUtility;
+
+function getConfig() {
+	let m = document.URL.match(new RegExp("\\?(\\w+)(#\\d+)?$"));
+	console.log("--------------------------------")
+	console.log(m);
+	let stripname = m ? m[1] : "";
+	let config = {};
+	if (stripname == "twb") {
+		config = {
+			"filename": "twbData.js",
+			"jsonPName": "TheWhiteboardData",
+			"bookmarkKey": "/comics/the-whiteboard/bookmarks/list",
+			"pageTitle": "The Whiteboard Archive Binge Speedreader",
+			"updateKey": "twb",
+			"cssFilename": "twb.css",
+			"creditsblurb": "The Whiteboard is written and drawn by <a href='https://www.patreon.com/docsmachine'>Doc Nickel (Doc's Machine & Airsmith Services)</a>.",
+			"frontpagelink": "http://www.the-whiteboard.com/",
+			"stripname": "The Whiteboard",
+			"rowPadding": 30,
+			"baseurl": "http://www.the-whiteboard.com/"
+		}
+	} else if (stripname == "ss") {
+		config = {
+			"filename": "ssData.js",
+			"jsonPName": "SSData",
+			"bookmarkKey": "/comics/swords-and-sausages/bookmarks/list",
+			"pageTitle": "Swords and Sausages Archive Binge Speedreader",
+			"updateKey": "ss",
+			"cssFilename": "ss.css",
+			"creditsblurb": "Swords and Sausages is written and drawn by <a href='https://www.patreon.com/tigerknight'>Jan (Tigerknight)</a>.",
+			"frontpagelink": "https://www.tigerknight.com/ss",
+			"stripname": "Sword and Sausages",
+			"rowPadding": 20,
+			"baseurl": "https://www.tigerknight.com"
+		}
+	} else if (stripname == "cc") {
+		config = {
+			"filename": "ccData.js",
+			"jsonPName": "CCData",
+			"bookmarkKey": "/comics/college-catastrophe/bookmarks/list",
+			"pageTitle": "College Catastrophe Archive Binge Speedreader",
+			"updateKey": "cc",
+			"cssFilename": "cc.css",
+			"creditsblurb": "College Catastrophe is written and drawn by <a href='https://www.patreon.com/tigerknight'>Jan (Tigerknight)</a>.",
+			"frontpagelink": "https://www.tigerknight.com/cc",
+			"stripname": "College Catastrophe",
+			"rowPadding": 30,
+			"baseurl": "https://www.tigerknight.com"
+		}
+	} else if (stripname == "9to9") {
+		config = {
+			"filename": "9to9Data.js",
+			"jsonPName": "Data",
+			"bookmarkKey": "/comics/nine-to-nine/bookmarks/list",
+			"pageTitle": "Nine to Nine Archive Binge Speedreader",
+			"updateKey": "9to9",
+			"cssFilename": "9to9.css",
+			"creditsblurb": "Nine to Nine is written and drawn by <a href='https://www.patreon.com/tigerknight'>Jan (Tigerknight)</a>.",
+			"frontpagelink": "https://www.tigerknight.com/99",
+			"stripname": "Nine to Nine",
+			"rowPadding": 30,
+			"baseurl": "https://www.tigerknight.com"
+		}
+	} else if (stripname == "oots") {
+		config = {
+			"filename": "ootsData.js",
+			"jsonPName": "OOTSData",
+			"bookmarkKey": "/comics/order-of-the-stick/bookmarks/list",
+			"pageTitle": "Order of the Stick Archive Binge Speedreader",
+			"updateKey": "oots",
+			"cssFilename": "oots.css",
+			"creditsblurb": "Order of the Stick is written and drawn by <a href='http://www.giantitp.com/'>Rich Burlew</a>.",
+			"frontpagelink": "http://www.giantitp.com/cgi-bin/GiantITP/ootscript",
+			"stripname": "Order of the Stick",
+			"rowPadding": 30,
+			"baseurl": "http://www.giantitp.com"
+		}
+	} else if (stripname == "chupa") {
+		config = {
+			"filename": "chupaData.js",
+			"jsonPName": "ChupaData",
+			"bookmarkKey": "/comics/chupa-revolution/bookmarks/list",
+			"pageTitle": "Chupa r[E]volution Archive Binge Speedreader",
+			"updateKey": "chupa",
+			"cssFilename": "chupa.css",
+			"creditsblurb": "Chupa r[E]volution is written and drawn by <a href='https://www.furaffinity.net/user/myshu/'>Myshu</a>.",
+			"frontpagelink": "http://www.chuparevolution.com/",
+			"stripname": "Chupa r[E]volution",
+			"rowPadding": 30,
+			"baseurl": "http://www.chuparevolution.com/comics/"
+		}
+	} else if (stripname == "td") {
+		config = {
+			"filename": "tdData.js",
+			"jsonPName": "tdData",
+			"bookmarkKey": "/comics/twindragonscomic/bookmarks/list",
+			"pageTitle": "Twin Dragons Archive Binge Speedreader",
+			"updateKey": "td",
+			"cssFilename": "td.css",
+			"creditsblurb": "Twin Dragons is written and drawn by Robin Dassen (<a href='https://www.furaffinity.net/user/dragonkai/'>Dragon Kai</a>).",
+			"frontpagelink": "http://www.twindragonscomic.com/",
+			"stripname": "Twin Dragons",
+			"rowPadding": 40,
+			"baseurl": "http://www.twindragonscomic.com/"
+		}
+	} else if (stripname == "cf") {
+		config = {
+			"filename": "cfData.js",
+			"jsonPName": "cfData",
+			"bookmarkKey": "/comics/crimsonflag/bookmarks/list",
+			"pageTitle": "Crimson Flag Archive Binge Speedreader",
+			"updateKey": "cf",
+			"cssFilename": "cf.css",
+			"creditsblurb": "Crimson Flag is written and drawn by <a href='https://www.furaffinity.net/user/virmir/'>Virmir</a>.",
+			"frontpagelink": "https://crimsonflagcomic.com/",
+			"stripname": "Crimson Flag",
+			"rowPadding": 40,
+			"baseurl": "https://crimsonflagcomic.com/"
+		}
+	} else {
+		console.log("Unknown comic: " + stripname)
+		document.html = "unknown comic"
+	}
+	return config;
+}
+
+
+var config;
+
+function SetupSpeedreader(Utility) {
+
+	// URL logic
+	function getUrl(index, record) {
+		var padNum = record.numlen > 0 ? Utility.fixedLen(index + record.idxoffset, record.numlen) : '';
+		let url = record.prefix+padNum+record.ext;
+		return config.baseurl + url;
+	};
+
+	function getPageUrl(index, record) {
+		var padNum = record.numlen > 0 ? Utility.fixedLen(index + record.idxoffset, record.numlen) : '';
+		let url = record.pageUrl ? record.pageUrl : record.prefix+padNum+".html"
+		return config.baseurl + url;
+	};
+	
+	// comic row layout
+	function render(node, index, record) {
+		var imgUrl = getUrl(index, record);
+		var pageUrl = getPageUrl(index, record);
+		let title = record.title ? record.title : index;
+		node.find(".num").text(title).attr("href", pageUrl);
+		node.find("img").attr("src", imgUrl);
+	};
+	
+	bingerUtility = Utility;
+	
+	config = getConfig();
+	document.title = config.pageTitle;
+	$("#updatelink").attr("href", "update.php?strip=" + config.updateKey)
+	$('head').append('<link rel="stylesheet" type="text/css" href="' + config.cssFilename + '">');
+	$('#creditsblurb').html(config.creditsblurb);
+	$('#frontpagelink').attr("href", config.frontpagelink);
+	$('.stripname').html(config.stripname);
+
+	// configuration
+	return {
+		// comic dimension data in external file now
+		dataPromise: $.ajax({
+			url: config.filename,
+			crossDomain: true,
+			dataType: "jsonp",
+			jsonpCallback: config.jsonPName
+		}),
+		comicContainer: $("#contain"),
+		comicTmpl: $(".tmpl .comic"),
+		render: render,
+		rowPadding: config.rowPadding,
+		scrollPadding: 300,
+		
+		// update in 40-80 minutes
+		refreshInterval: (40*60*1000) * (1 + Math.random()),
+//		refreshInterval: 5000,
+		
+		bookmarkKey: config.bookmarkKey,
+		bookmarkTmpl: $(".tmpl .entry"),
+		bookmarkBox: $("#bookmarkBox"),
+		bookmarkList: $("#bookmarkList")
+	};
+};
+
+function updateStrip() {
+	window.open("update.php?strip=" + config.updateKey, '_blank');
+	return false;
+}
+
+function childClosed() {
+	console.log("Child window reported that it was closed")
+}
+
+function updateFinished() {
+	console.log("Child window reported that the update was finished")
+	bingerUtility.triggerUpdate();
+}
+
+</script>
+
+</head>
+<body>
+
+<div class="block headBlock">
+<h1><span class="stripname"></span> Archive Binge Speedreader</h1>
+<p>This tool allows reading <span class="stripname"></span> in a continuous format, uninterrupted
+by page loads. It will automatically load comics as they scroll onscreen,
+so your browser doesn't have to download everything at once.</p>
+
+</div>
+
+<div id="contain"></div>
+
+<div class="comic">
+<div class="block moreBlock">
+Continue to <a id="frontpagelink" href="#">the comic front page</a>.
+</div>
+</div>
+
+<hr />
+<p class="small"><span id="creditsblurb"></span> This interface was based on the <a href="https://github.com/Tangent128/freefall-speedreader">Freefall Speedreader by Tangent</a> and adapted by Zefiro. Click <a id="updatelink" target="_blank" href="#" onclick="return updateStrip()">here</a> to update the strip list.</p>
+
+<div id="bookmarkBox">
+	<div id="bookmarkList">
+	</div>
+	<div class="entry">
+		<button class="markPlace">Save Spot</button>
+	</div>
+</div>
+
+<div id="downBox">
+	(<a href="#999999999999999">bottom</a>)
+</div>
+
+<div id="upBox">
+	(<a href="#1">top</a>)
+</div>
+
+<div class="tmpl">
+	<div class="comic">
+		<div class="bg">
+			<span class="dbg"></span>
+			<a class="num"></a>
+			<img />
+		</div>
+	</div>
+	<div class="entry">
+		<a class="link"></a>
+		<a class="deleteMark">x</a>
+		<hr />
+	</div>
+</div>
+
+</body>
+</html>

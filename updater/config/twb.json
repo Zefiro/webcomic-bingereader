@@ -1,0 +1,10 @@
+{
+	"baseUrl": "http://www.the-whiteboard.com/",
+	"targetFilename": "twbData.js",
+	"outputJsonPName": "TheWhiteboardData",
+	"startUrl": "autowb001.html",
+	"refetchAmount": 1,
+	"parser": "parseTwb",
+	"htmlSuffix": ".html",
+        "downloadFolder": "whiteboard"
+}

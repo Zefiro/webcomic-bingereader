@@ -1,0 +1,10 @@
+{
+	"baseUrl": "http://www.chuparevolution.com/comics/",
+	"targetFilename": "chupaData.js",
+	"outputJsonPName": "ChupaData",
+	"startUrl": "revob0-01.html",
+	"refetchAmount": 1,
+	"parser": "parseChupa",
+	"htmlSuffix": "",
+	"downloadFolder": "chupa"
+}

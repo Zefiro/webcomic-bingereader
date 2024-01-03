@@ -1,0 +1,9 @@
+{
+	"baseUrl": "http://www.giantitp.com",
+	"targetFilename": "ootsData.js",
+	"outputJsonPName": "OOTSData",
+	"startUrl": "/comics/oots0001.html",
+	"refetchAmount": 1,
+	"parser": "parseOOTS",
+	"htmlSuffix": ""
+}

@@ -1,0 +1,111 @@
+body {
+	color: #000;
+	background: #222;
+	font-size: 16px;
+}
+.tmpl {
+	display: none;
+}
+
+/* comic instance CSS */
+.comic {
+	width: 1100px;
+}
+.comic .bg {
+	position: absolute;
+	display: block;
+	top: 0; left: 0; right: 0; bottom: 0;
+}
+.comic .num {
+	background-color: white;
+	color: black;
+	position: absolute;
+	top: 0; left: 32px;
+	font-weight: bold;
+	padding: 3px;
+	z-index: 1;
+}
+.comic img {
+	position: absolute;
+	top: 1.5em; left: 32px;
+	z-index: 0;
+}
+
+/* message CSS */
+.block {
+	margin-left: 32px;
+	padding: 16px;
+
+	background: #efefef;
+}
+.headBlock {
+	border: 2px solid #800;
+	width: calc(768px - (16px + 2px) * 2);
+	margin-bottom: 20px;
+}
+.headBlock h1 {
+	margin: 0;
+}
+.small {
+	font-size: 12px;
+}
+.moreBlock {
+	border: 3px solid black;
+	width: calc(982px - (16px + 3px) * 2);
+
+	background: #eee;
+	
+	font-size: 24px;
+}
+
+/* Bookmark CSS */
+#bookmarkBox {
+	position: fixed;
+	right: 1em;
+	bottom: 1em;
+	
+	border: solid thin #00f;
+	
+	background: #fff;
+}
+#bookmarkBox .entry {
+	display: block;
+}
+#bookmarkBox a, #bookmarkBox hr {
+	color: #00f;
+}
+#bookmarkBox hr {
+	clear: both;
+	margin: 0px;
+}
+#bookmarkBox .deleteMark {
+	color: #f00;
+	cursor: pointer;
+	float: right;
+	margin-bottom: 5px;
+	margin-right: 3px;
+}
+
+#downBox {
+	position: fixed;
+	color: black;
+	right: 1em;
+	top: 3em;
+	background: #fff;
+}
+
+#downBox a {
+	color: black;
+}
+
+#upBox {
+	position: fixed;
+	right: 1em;
+	top: 1em;
+	background: #fff;
+}
+
+#upBox a {
+	color: black;
+}
+

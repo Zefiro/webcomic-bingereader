@@ -1,0 +1,10 @@
+{
+	"baseUrl": "https://joshuawright.net/",
+	"targetFilename": "swData.js",
+	"outputJsonPName": "SWData",
+	"startUrl": "slack-wyrm-001.html",
+	"refetchAmount": 1,
+	"parser": "parseSW",
+	"htmlSuffix": ".html",
+	"downloadFolder": "slackwyrm"
+}

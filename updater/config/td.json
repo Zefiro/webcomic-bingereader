@@ -1,0 +1,10 @@
+{
+	"baseUrl": "https://www.twindragonscomic.com/",
+	"targetFilename": "tdData.js",
+	"outputJsonPName": "tdData",
+	"startUrl": "comic/the-beginning/",
+	"refetchAmount": 10,
+	"parser": "parseTD",
+	"htmlSuffix": "",
+	"downloadFolder": "twindragons"
+}

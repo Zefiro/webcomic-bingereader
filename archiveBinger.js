@@ -66,8 +66,9 @@ $(function() {
 		
 		if(config.refreshInterval) {
 			window.setTimeout(function() {
-				var refreshedConfig = refreshConfig();
-				updateData(refreshedConfig);
+//				var refreshedConfig = refreshConfig();
+//				updateData(refreshedConfig);
+				Utility.triggerUpdate();
 			}, config.refreshInterval);
 		}
 	}
@@ -80,6 +81,11 @@ $(function() {
 				processUpdate(config, data);
 			});
 		}
+	}
+	
+	Utility.triggerUpdate = function() {
+		var refreshedConfig = refreshConfig();
+		updateData(refreshedConfig);
 	}
 	
 	/**

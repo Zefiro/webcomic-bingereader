@@ -1,0 +1,9 @@
+{
+	"baseUrl": "https://www.tigerknight.com",
+	"targetFilename": "ccData.js",
+	"outputJsonPName": "CCData",
+	"startUrl": "/cc/2000-11-10",
+	"refetchAmount": 1,
+	"parser": "parseSS",
+	"htmlSuffix": ""
+}

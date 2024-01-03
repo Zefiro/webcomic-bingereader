@@ -1,0 +1,14 @@
+{
+  "name": "getTWB",
+  "version": "0.0.1",
+  "description": "",
+  "author": "Zefiro Anthragon",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "*",
+    "css": "^3.0.0",
+    "node-fetch": "2.*",
+    "request-image-size": "*",
+    "winston": "^3.11.0"
+  }
+}

@@ -1,0 +1,9 @@
+{
+	"baseUrl": "https://www.tigerknight.com",
+	"targetFilename": "9to9Data.js",
+	"outputJsonPName": "Data",
+	"startUrl": "/99/2014-01-01",
+	"refetchAmount": 1,
+	"parser": "parseSS",
+	"htmlSuffix": ""
+}
